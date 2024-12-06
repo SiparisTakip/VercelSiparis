@@ -4,40 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sipariş Listesi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 30px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-size: 16px;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            background-color: #f44336;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+        .action-links {
+            display: flex;
+            gap: 10px;
+        }
+        .action-links a {
+            background-color: #008CBA;
+        }
+        .action-links a:hover {
+            background-color: #007bb5;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sipariş Listesi</h1>
-    <a href="{{ url_for('add_order') }}">Yeni Sipariş Ekle</a>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>İsim Soyisim</th>
-                <th>İlçe</th>
-                <th>İl</th>
-                <th>Telefon</th>
-                <th>Tutar</th>
-                <th>Ürün</th>
-                <th>İşlemler</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for siparis in siparisler %}
-            <tr>
-                <td>{{ siparis['İSİM SOYİSİM'] }}</td>
-                <td>{{ siparis['İLÇE'] }}</td>
-                <td>{{ siparis['İL'] }}</td>
-                <td>{{ siparis['TELEFON'] }}</td>
-                <td>{{ siparis['TUTAR'] }}</td>
-                <td>{{ siparis['ÜRÜN'] }}</td>
-                <td>
-                    <a href="{{ url_for('update_order', order_id=siparis['id']) }}">Düzenle</a>
-                    <form action="{{ url_for('delete_order', order_id=siparis['id']) }}" method="post" style="display:inline;">
-                        <button type="submit">Sil</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Sipariş Listesi</h1>
+        <a href="{{ url_for('add_order') }}">Yeni Sipariş Ekle</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>İsim Soyisim</th>
+                    <th>İlçe</th>
+                    <th>İl</th>
+                    <th>Telefon</th>
+                    <th>Tutar</th>
+                    <th>Ürün</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for siparis in siparisler %}
+                <tr>
+                    <td>{{ siparis['İSİM SOYİSİM'] }}</td>
+                    <td>{{ siparis['İLÇE'] }}</td>
+                    <td>{{ siparis['İL'] }}</td>
+                    <td>{{ siparis['TELEFON'] }}</td>
+                    <td>{{ siparis['TUTAR'] }}</td>
+                    <td>{{ siparis['ÜRÜN'] }}</td>
+                    <td class="action-links">
+                        <a href="{{ url_for('update_order', order_id=siparis['id']) }}" class="btn">Düzenle</a>
+                        <form action="{{ url_for('delete_order', order_id=siparis['id']) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
