@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siparişi Güncelle</title>
+</head>
+<body>
+    <h1>Siparişi Güncelle</h1>
+    <form method="post">
+        <input type="text" name="isim_soyisim" value="{{ siparis['İSİM SOYİSİM'] }}" placeholder="İsim Soyisim"><br>
+        <input type="text" name="adres" value="{{ siparis['ADRES'] }}" placeholder="Adres"><br>
+        <input type="text" name="ilce" value="{{ siparis['İLÇE'] }}" placeholder="İlçe"><br>
+        <input type="text" name="il" value="{{ siparis['İL'] }}" placeholder="İl"><br>
+        <input type="text" name="telefon" value="{{ siparis['TELEFON'] }}" placeholder="Telefon"><br>
+        <input type="text" name="tutar" value="{{ siparis['TUTAR'] }}" placeholder="Tutar"><br>
+        <textarea name="urun" placeholder="Ürün">{{ siparis['ÜRÜN'] }}</textarea><br>
+        <button type="submit">Güncelle</button>
+    </form>
+    <a href="{{ url_for('index') }}">Geri</a>
+</body>
+</html>
