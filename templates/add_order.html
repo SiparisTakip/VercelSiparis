@@ -4,76 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeni Sipariş Ekle</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-
-        form {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-
-        textarea {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #4cae4c;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Yeni Sipariş Ekle</h1>
-    <form method="post">
-        <textarea name="bilgiler" rows="10" cols="30" placeholder="Sipariş bilgilerini buraya yazın"></textarea><br>
-        <button type="submit">Kaydet</button>
-    </form>
-    <a href="{{ url_for('index') }}">Geri</a>
+    <div class="container">
+        <h1>Yeni Sipariş Ekle</h1>
+        <form method="post" class="form-box">
+            <textarea name="bilgiler" rows="10" placeholder="Sipariş bilgilerini buraya yazın"></textarea>
+            <button type="submit">Kaydet</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="back-link">Geri</a>
+    </div>
 </body>
 </html>
