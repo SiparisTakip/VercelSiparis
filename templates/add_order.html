@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Sipariş Ekle</title>
+</head>
+<body>
+    <h1>Yeni Sipariş Ekle</h1>
+    <form method="post">
+        <textarea name="bilgiler" rows="10" cols="30" placeholder="Sipariş bilgilerini buraya yazın"></textarea><br>
+        <button type="submit">Kaydet</button>
+    </form>
+    <a href="{{ url_for('index') }}">Geri</a>
+</body>
+</html>
