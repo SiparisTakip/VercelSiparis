@@ -18,7 +18,8 @@
             margin-top: 30px;
         }
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
@@ -76,6 +77,31 @@
         .action-links a:hover {
             background-color: #007bb5;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table thead th:nth-child(6),
+            table tbody td:nth-child(6) {
+                display: none;
+            }
+
+            .show-product {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+                color: #007bb5;
+                cursor: pointer;
+            }
+
+            .product-details {
+                display: none;
+                background-color: #f9f9f9;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -110,9 +136,27 @@
                         </form>
                     </td>
                 </tr>
+                <tr class="mobile-only">
+                    <td colspan="6" class="show-product" onclick="toggleProductDetails(this)">Ürün Detaylarını Göster</td>
+                </tr>
+                <tr class="product-details">
+                    <td colspan="6">{{ siparis['ÜRÜN'] }}</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    <script>
+        function toggleProductDetails(element) {
+            const detailsRow = element.parentElement.nextElementSibling;
+            if (detailsRow.style.display === "table-row") {
+                detailsRow.style.display = "none";
+                element.textContent = "Ürün Detaylarını Göster";
+            } else {
+                detailsRow.style.display = "table-row";
+                element.textContent = "Ürün Detaylarını Gizle";
+            }
+        }
+    </script>
 </body>
 </html>
