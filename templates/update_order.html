@@ -4,19 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siparişi Güncelle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 30px;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Siparişi Güncelle</h1>
-    <form method="post">
-        <input type="text" name="isim_soyisim" value="{{ siparis['İSİM SOYİSİM'] }}" placeholder="İsim Soyisim"><br>
-        <input type="text" name="adres" value="{{ siparis['ADRES'] }}" placeholder="Adres"><br>
-        <input type="text" name="ilce" value="{{ siparis['İLÇE'] }}" placeholder="İlçe"><br>
-        <input type="text" name="il" value="{{ siparis['İL'] }}" placeholder="İl"><br>
-        <input type="text" name="telefon" value="{{ siparis['TELEFON'] }}" placeholder="Telefon"><br>
-        <input type="text" name="tutar" value="{{ siparis['TUTAR'] }}" placeholder="Tutar"><br>
-        <textarea name="urun" placeholder="Ürün">{{ siparis['ÜRÜN'] }}</textarea><br>
-        <button type="submit">Güncelle</button>
-    </form>
-    <a href="{{ url_for('index') }}">Geri</a>
+    <div class="container">
+        <h1>Siparişi Güncelle</h1>
+        <form method="post">
+            <input type="text" name="isim_soyisim" value="{{ siparis['İSİM SOYİSİM'] }}" placeholder="İsim Soyisim" required><br>
+            <input type="text" name="adres" value="{{ siparis['ADRES'] }}" placeholder="Adres" required><br>
+            <input type="text" name="ilce" value="{{ siparis['İLÇE'] }}" placeholder="İlçe" required><br>
+            <input type="text" name="il" value="{{ siparis['İL'] }}" placeholder="İl" required><br>
+            <input type="text" name="telefon" value="{{ siparis['TELEFON'] }}" placeholder="Telefon" required><br>
+            <input type="text" name="tutar" value="{{ siparis['TUTAR'] }}" placeholder="Tutar" required><br>
+            <textarea name="urun" placeholder="Ürün" required>{{ siparis['ÜRÜN'] }}</textarea><br>
+            <button type="submit">Güncelle</button>
+        </form>
+        <a href="{{ url_for('index') }}">Geri</a>
+    </div>
 </body>
 </html>
